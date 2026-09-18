@@ -90,6 +90,8 @@
 
 .ty-field {
     width: 100%;
+    /* textarea and input do not inherit the page font on their own */
+    font-family: inherit;
     /* 16px keeps iOS Safari from zooming in when the field is focused */
     font-size: 16px;
     color: #3d1f13;
