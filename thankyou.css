@@ -1,0 +1,370 @@
+/* Thank-you note generator - mobile first, works on iOS Safari and Android Chrome */
+
+/* style.css capitalises every word on the whole site, which would wreck
+   sentence-cased note text, so it is switched off inside this page. */
+.ty-page,
+.ty-page * {
+    text-transform: none;
+    -webkit-text-size-adjust: 100%;
+}
+
+.ty-page {
+    background: #3d1f13;
+    min-height: 100%;
+    /* room for the fixed header and the sticky action bar */
+    padding-top: 70px;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom));
+}
+
+.ty-main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 20px 16px 0;
+}
+
+/* ---------------- page heading ---------------- */
+
+.ty-intro {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.ty-intro h1 {
+    color: #fff;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.ty-intro h1 span {
+    color: burlywood;
+}
+
+.ty-intro p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: .8rem;
+}
+
+/* ---------------- steps ---------------- */
+
+.ty-step {
+    background: #fdf6ec;
+    border-radius: 12px;
+    padding: 18px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 .4rem 12px rgba(0, 0, 0, .25);
+}
+
+.ty-step h2 {
+    font-size: 18px;
+    color: #3d1f13;
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    line-height: 1.3;
+}
+
+.ty-step h2 b {
+    background: brown;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ty-step .ty-hint {
+    font-size: 13px;
+    color: #7a6a5f;
+    margin: .6rem 0 12px;
+    line-height: 1.5;
+}
+
+/* ---------------- inputs ---------------- */
+
+.ty-field {
+    width: 100%;
+    /* 16px keeps iOS Safari from zooming in when the field is focused */
+    font-size: 16px;
+    color: #3d1f13;
+    background: #fff;
+    border: .2rem solid #e3d5c3;
+    border-radius: .8rem;
+    padding: 12px 14px;
+    min-height: 48px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.ty-field:focus {
+    border-color: brown;
+}
+
+textarea.ty-field {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+}
+
+.ty-counter {
+    font-size: 12px;
+    color: #7a6a5f;
+    text-align: right;
+    margin-top: .6rem;
+}
+
+.ty-counter.is-max {
+    color: brown;
+    font-weight: 600;
+}
+
+/* ---------------- chips ---------------- */
+
+.ty-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.ty-chip {
+    font-family: inherit;
+    font-size: 14px;
+    color: #3d1f13;
+    background: #fff;
+    border: .2rem solid #e3d5c3;
+    border-radius: 50px;
+    padding: 10px 14px;
+    /* 44px minimum so it is comfortable to tap on a phone */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ty-chip[aria-pressed="true"] {
+    background: brown;
+    border-color: brown;
+    color: #fff;
+    font-weight: 500;
+}
+
+.ty-chip .ty-emoji {
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* yes / no occasion switch */
+
+.ty-switch {
+    display: flex;
+    gap: .8rem;
+}
+
+.ty-switch .ty-chip {
+    flex: 1 1 0;
+    justify-content: center;
+}
+
+.ty-occasions[hidden] {
+    display: none;
+}
+
+.ty-occasions {
+    margin-top: 14px;
+}
+
+/* ---------------- error ---------------- */
+
+.ty-error {
+    font-size: 14px;
+    color: #fff;
+    background: brown;
+    border-radius: .8rem;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.ty-error[hidden] {
+    display: none;
+}
+
+/* ---------------- the note card ---------------- */
+
+.ty-result[hidden] {
+    display: none;
+}
+
+.ty-note {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 .6rem 18px rgba(0, 0, 0, .3);
+    border-top: .6rem solid burlywood;
+}
+
+.ty-note-tag {
+    font-size: 12px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    color: #a08b78;
+    margin-bottom: 12px;
+}
+
+.ty-note p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #2b1a11;
+    margin-bottom: 10px;
+}
+
+.ty-note .ty-sign {
+    font-size: 15px;
+    color: brown;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.ty-note-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.ty-btn {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 13px 20px;
+    min-height: 48px;
+    border-radius: .8rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    flex: 1 1 140px;
+}
+
+.ty-btn-primary {
+    background: brown;
+    color: #fff;
+}
+
+.ty-btn-secondary {
+    background: #fdf6ec;
+    color: #3d1f13;
+    border: .2rem solid #e3d5c3;
+}
+
+.ty-btn-copy.is-copied {
+    background: #1f7a4d;
+}
+
+/* ---------------- sticky generate bar ---------------- */
+
+.ty-actionbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    background: rgba(29, 14, 8, .96);
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    box-shadow: 0 -.4rem 12px rgba(0, 0, 0, .35);
+}
+
+.ty-actionbar .ty-btn {
+    width: 100%;
+    font-size: 18px;
+    flex: none;
+}
+
+/* ---------------- copied toast ---------------- */
+
+.ty-toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(100px + env(safe-area-inset-bottom));
+    transform: translateX(-50%) translateY(10px);
+    background: #1f7a4d;
+    color: #fff;
+    font-size: 15px;
+    padding: 11px 20px;
+    border-radius: 50px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 950;
+    max-width: 90vw;
+    text-align: center;
+}
+
+.ty-toast.is-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* hidden helper used by the clipboard fallback */
+.ty-copy-helper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: none;
+    opacity: 0;
+    font-size: 16px;
+}
+
+/* ---------------- larger screens ---------------- */
+
+@media (min-width: 768px) {
+    .ty-page {
+        padding-top: 90px;
+        padding-bottom: 40px;
+    }
+
+    .ty-intro h1 {
+        font-size: 40px;
+    }
+
+    .ty-step {
+        padding: 24px 22px;
+    }
+
+    /* on a desktop the bar does not need to float over the page */
+    .ty-actionbar {
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0 0 20px;
+    }
+
+    .ty-toast {
+        bottom: 30px;
+    }
+}
+
+/* people who ask for less motion get none of ours */
+@media (prefers-reduced-motion: reduce) {
+    .ty-page * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Write a fresh thank you note for every Madness thickshake order.">
+    <meta name="theme-color" content="#000000">
+    <title>Thank You Notes | Madness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="thankyou.css">
+</head>
+<body class="ty-page">
+
+    <header class="header">
+        <a href="index.html"><img class="logo" src="fotor-2025022211841.png" alt="Madness" width="5%"></a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="thankyou.html">Thank You Note</a>
+            <a href="index.html#about">About Us</a>
+        </nav>
+
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars" role="button" tabindex="0" aria-label="Menu"></div>
+            <div id="cart" class="fas fa-shopping-cart"></div>
+            <div id="login" class="fas fa-user"></div>
+        </div>
+    </header>
+
+    <main class="ty-main">
+
+        <div class="ty-intro">
+            <h1>Thank You <span>Notes</span></h1>
+            <p>Tell us what they ordered and we will write them a short note. Every note comes out different.</p>
+        </div>
+
+        <form id="ty-form" novalidate>
+
+            <!-- step 1 -->
+            <section class="ty-step">
+                <h2><b>1</b> Who is it for?</h2>
+                <p class="ty-hint">First name is enough. Leave it blank and we will just say "friend".</p>
+                <input class="ty-field" type="text" id="ty-name" name="name"
+                       placeholder="e.g. Priya" autocomplete="off" autocapitalize="words"
+                       enterkeyhint="done" maxlength="24">
+            </section>
+
+            <!-- step 2 -->
+            <section class="ty-step">
+                <h2><b>2</b> Which thickshake did they order?</h2>
+                <p class="ty-hint">The note is written around this, so pick the one in their hand.</p>
+                <div class="ty-chips" id="ty-flavours" role="group" aria-label="Thickshake flavour"></div>
+            </section>
+
+            <!-- step 3 -->
+            <section class="ty-step">
+                <h2><b>3</b> Any occasion?</h2>
+                <p class="ty-hint">Only if there is one. A plain order works perfectly well.</p>
+                <div class="ty-switch" role="group" aria-label="Is there an occasion">
+                    <button type="button" class="ty-chip" id="ty-occasion-no" aria-pressed="true">No occasion</button>
+                    <button type="button" class="ty-chip" id="ty-occasion-yes" aria-pressed="false">Yes, there is</button>
+                </div>
+                <div class="ty-chips ty-occasions" id="ty-occasions" role="group" aria-label="Occasion" hidden></div>
+            </section>
+
+            <!-- step 4 -->
+            <section class="ty-step">
+                <h2><b>4</b> Anything personal to add?</h2>
+                <p class="ty-hint">Optional. One short line from you, added to the end of the note.</p>
+                <textarea class="ty-field" id="ty-touch" name="touch" rows="2" maxlength="90"
+                          placeholder="e.g. thanks for waiting through the rush"></textarea>
+                <div class="ty-counter" id="ty-counter">0 / 90</div>
+            </section>
+
+            <p class="ty-error" id="ty-error" role="alert" hidden></p>
+
+            <div class="ty-actionbar">
+                <button type="submit" class="ty-btn ty-btn-primary" id="ty-generate">
+                    <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Write the note
+                </button>
+            </div>
+        </form>
+
+        <!-- the generated note -->
+        <section class="ty-result" id="ty-result" hidden aria-live="polite">
+            <div class="ty-note">
+                <div class="ty-note-tag" id="ty-note-tag">Your note</div>
+                <div id="ty-note-body"></div>
+                <p class="ty-sign" id="ty-note-sign"></p>
+            </div>
+
+            <div class="ty-note-actions">
+                <button type="button" class="ty-btn ty-btn-primary ty-btn-copy" id="ty-copy">
+                    <i class="fas fa-copy" aria-hidden="true"></i> Copy note
+                </button>
+                <button type="button" class="ty-btn ty-btn-secondary" id="ty-again">
+                    <i class="fas fa-rotate" aria-hidden="true"></i> Another version
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="ty-toast" id="ty-toast" role="status" aria-live="polite"></div>
+    <textarea class="ty-copy-helper" id="ty-copy-helper" readonly aria-hidden="true" tabindex="-1"></textarea>
+
+    <script src="thankyou.js"></script>
+    <script src="thankyou-ui.js"></script>
+</body>
+</html>
