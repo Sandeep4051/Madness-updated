@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Thickshake thank you notes">
+    <title>Madness thank you notes</title>
+
+    <!-- full bleed ground: Android masks the corners itself, iOS rounds them -->
+    <rect width="512" height="512" fill="#3d1f13"/>
+
+    <!-- straw, drawn first so the whipped top sits over its base -->
+    <path d="M300 214 L346 96" stroke="#deb887" stroke-width="24" stroke-linecap="round" fill="none"/>
+
+    <!-- whipped top, kept no wider than the rim below it -->
+    <g fill="#fdf6ec">
+        <circle cx="202" cy="190" r="42"/>
+        <circle cx="256" cy="158" r="56"/>
+        <circle cx="310" cy="190" r="42"/>
+        <rect x="160" y="188" width="192" height="30"/>
+    </g>
+
+    <!-- glass, tapering to the base -->
+    <path d="M161 206 L351 206 L316 404 A18 18 0 0 1 298 420 L214 420 A18 18 0 0 1 196 404 Z" fill="#fdf6ec"/>
+
+    <!-- thank you heart, knocked out of the glass -->
+    <path d="M256 356 C256 356 206 324 206 292 A28 28 0 0 1 256 274 A28 28 0 0 1 306 292 C306 324 256 356 256 356 Z" fill="#a52a2a"/>
+</svg>
